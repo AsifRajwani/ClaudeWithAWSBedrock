@@ -1,0 +1,68 @@
+# ------------------------------------
+# 1. Virtual Environment
+# ------------------------------------
+
+# Ignore the virtual environment folder
+.venv/
+# If you use a different name (e.g., 'env', 'venv'), add it here too
+# env/
+# venv/
+
+# ------------------------------------
+# 2. Bytecode and OS generated files
+# ------------------------------------
+
+# Bytecode files (Python compiled files)
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# OS generated files
+# Mac
+.DS_Store
+# Windows
+Thumbs.db
+
+# ------------------------------------
+# 3. Jupyter/Notebook Files
+# ------------------------------------
+
+# Temporary checkpoints created by the notebook editor
+.ipynb_checkpoints
+
+# ------------------------------------
+# 4. VS Code Files
+# ------------------------------------
+
+# VS Code settings and launch configs (often project-specific)
+#.vscode/
+
+# ------------------------------------
+# 5. Testing & Build Artifacts
+# ------------------------------------
+
+# pytest cache
+.pytest_cache/
+
+# Coverage files
+.coverage
+htmlcov/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# ------------------------------------
+# 6. Sensitive & Config Data
+# ------------------------------------
+
+# Environment variables, API keys, and secrets
+.env
+.flaskenv
+instance/
+config.py  # Use this if you store secrets here
+
+# Log files
+*.log
