@@ -1,106 +1,150 @@
-# Python Starter Project
+# Claude With Amazon Bedrock - Course Code Repository
 
-A clean starter template for Python development that works with **any editor or IDE**. Supports both running Python files and Jupyter notebooks. VS Code (and forks like Cursor, Antigravity, Kiro, etc.) users get additional conveniences like auto-format on save. Follow the setup instructions below to get started.
+This repository contains code and notebooks for the Skilljar course **Claude with Amazon Bedrock**.
 
-Sample Python file (`src/main.py`), Jupyter notebooks (in `src/`), and a test (`tests/test_main.py`) are provided.
+- Course link: https://anthropic.skilljar.com/claude-in-amazon-bedrock
+- Goal: keep all course examples, exercises, and related experiments in one place
 
-## Features
+## Project Origin
 
-- **uv** for fast dependency management and virtual environment setup
-- Pytest for testing
-- Black + Ruff for code formatting and linting
-- **VS Code bonus:** pre-configured settings for auto-format on save (works with any VS Code fork too)
+This repository was created from the `PythonStarter` template:
 
-## Getting started from the starter
-
-This repository is intended to be a **starter template**. Pick the option that applies to you:
-
-### Option A: Fork (for anyone who does not own this repo)
-
-1. **Fork** this repository on GitHub and give the fork whatever name you like.
-2. Clone your fork locally:
-   ```bash
-   git clone git@github.com:you/your-fork.git
-   cd your-fork
-   ```
-3. Follow the **Setup** section below and verify everything works.
-
-### Option B: Use as a template (for the repo owner or when forking isn't possible)
-
-GitHub doesn't allow you to fork your own repo. Instead, create a new repository from this one:
-
-1. Create a **new empty repo** on GitHub (e.g. `my-new-project`).
-2. Clone this starter locally and re-point it to your new repo:
-   ```bash
-   git clone git@github.com:asifrajwani/PythonStarter.git my-new-project
-   cd my-new-project
-   git remote set-url origin git@github.com:you/my-new-project.git
-   git push -u origin main
-   ```
-3. Follow the **Setup** section below and verify everything works.
-
-> **Tip:** Both options preserve the commit history as the base of your project.
-
+- https://github.com/AsifRajwani/PythonStarter
 
 ## Prerequisites
 
-- **Python 3.11+** (or let `uv` install it for you)
-- **uv** — install it if you don't have it: https://docs.astral.sh/uv/getting-started/installation/
+- Python 3.11+
+- `uv` installed: https://docs.astral.sh/uv/getting-started/installation/
+- An AWS account with Amazon Bedrock access
 
-## Setup
+## Local Environment Setup
+
+From the repository root, run:
 
 ```bash
 # verify uv is installed
 uv --version
 
-# (optional) update uv to the latest version
-uv self update
-
-# (optional) pin a specific Python version if you have a preference
-# uv python pin 3.11
-
-# install dependencies and create the virtual environment
+# install dependencies from pyproject and create/update virtual environment
 uv sync
+
+# bootstrap pip in the uv env
+uv run python -m ensurepip --upgrade
+
+# upgrade pip itself (optional but recommended)
+uv run python -m pip install --upgrade pip
+
+# now install boto (or boto3, etc.)
+uv run python -m pip install boto
+
+# install boto3
+uv run python -m pip install boto3
 ```
 
-> **Tip:** `pyproject.toml` now contains a `requires-python` field (>=3.11) so you won't see the warning about missing Python requirements when running commands like `uv run python -m pytest`. We default to Python 3.11 or newer; feel free to update this value in `pyproject.toml` if your project requires a different minimum version.
+## Validating the Setup
 
-## Testing the Setup
+Use this complete setup and validation guide for Claude on Amazon Bedrock to follow along with the Skilljar course.
 
-After setting up the environment you can verify everything is working by running both the regular Python code and the notebooks.
+### Step 1: Choose Your AWS Region
 
-### Running the Python Program
+Go to the **AWS Console** and switch your region to **us-east-1 (N. Virginia)** or **us-west-2 (Oregon)**. These have the broadest Claude model availability.
+
+### Step 2: Enable Anthropic Model Access
+
+Anthropic models are enabled by default on Bedrock, but they still require a one-time usage form before first use:
+
+1. Go to **Amazon Bedrock** in the AWS Console
+2. In the left nav, find **Model catalog**
+3. Search for **Claude** and click on a model (for example, Claude Sonnet)
+4. Click **Submit use case details**
+5. Fill out a brief form (for example: "Learning and experimenting with Anthropic models via a Skilljar course")
+
+> Do not skip this step. Without completing the FTU form, first API calls may temporarily succeed but then fail with a `403` error.
+
+### Step 3: Create an IAM User with Bedrock Permissions
+
+For a course/dev setup, create a dedicated IAM user with programmatic access:
+
+1. Go to **IAM -> Users -> Create user**
+2. Give it a name like `bedrock-course-user`
+3. Attach an inline or managed policy with these permissions:
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "bedrock:InvokeModel",
+        "bedrock:InvokeModelWithResponseStream",
+        "bedrock:ListFoundationModels",
+        "bedrock:ListInferenceProfiles",
+        "aws-marketplace:Subscribe",
+        "aws-marketplace:ViewSubscriptions"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+4. After creating the user, go to **Security credentials -> Create access key**
+5. Choose **Local code** as the use case
+6. Save the **Access Key ID** and **Secret Access Key** (the secret is shown only once)
+
+### Step 4: Install and Configure the AWS CLI
+
+Install the AWS CLI if needed: https://aws.amazon.com/cli/
+
+Then configure it:
 
 ```bash
-# execute the main script using uv-managed Python
-uv run python src/main.py
+aws configure
 ```
 
-You should see any output defined in `main.py`. Running through `uv` ensures the correct Python version from the pinned environment is used and mirrors how other commands (including notebooks) run.
+Enter when prompted:
 
-### Working with Notebooks
+- **AWS Access Key ID**: from Step 3
+- **AWS Secret Access Key**: from Step 3
+- **Default region**: `us-east-1`
+- **Default output format**: `json`
 
-The `src/` directory contains sample Jupyter notebooks (e.g. `simple_notebook.ipynb`). You can run them from any environment that supports Jupyter:
-
-- **VS Code / forks:** Open the notebook in the built-in Jupyter interface. Use the Run Cell controls or execute the whole notebook via the command palette.
-- **Any editor / command line:** Launch Jupyter and open the notebook in your browser:
-  ```bash
-  uv run jupyter notebook src/simple_notebook.ipynb
-  ```
-
-Each notebook uses the same environment as the Python code, so dependencies are shared.
-
-> **Selecting the kernel:**
->
-> Whether you're using VS Code or Jupyter in the browser, select the Python interpreter associated with this project (it will usually show the path under `.venv` or similar). This ensures cells execute with the same dependencies as `uv run` commands.
-
-### Running Tests
-
-We provide a simple `pytest` test for the starter project. Execute the tests through uv to ensure the correct environment:
+Verify it works:
 
 ```bash
-# from the workspace root
-uv run python -m pytest
+aws bedrock list-foundation-models --region us-east-1 | grep claude
 ```
 
-This will run `tests/test_main.py` and any additional tests you add later.
+### Step 5: Install the Python SDK (Boto3)
+
+The course examples use Boto3:
+
+```bash
+uv run python -m pip install boto3
+```
+
+Run the setup validation script:
+
+```bash
+uv run python src/validate_bedrock_setup.py
+```
+
+Optional: run with an explicit inference profile ID:
+
+```bash
+BEDROCK_MODEL_ID=us.anthropic.claude-3-5-sonnet-20241022-v2:0 \
+uv run python src/validate_bedrock_setup.py
+```
+
+If you get a Claude response back, your setup is working.
+
+### Quick Troubleshooting
+
+| Error | Fix |
+|-------|-----|
+| `403 / AccessDeniedException` | Complete the Anthropic FTU form in the Bedrock console |
+| `ValidationException` mentioning inference profile | Use an inference profile ID in `BEDROCK_MODEL_ID` (example: `us.anthropic.claude-3-5-sonnet-20241022-v2:0`) |
+| `ResourceNotFoundException` with "Legacy" model message | Pick an ACTIVE Claude model in Bedrock Model Catalog and set `BEDROCK_MODEL_ID` to its inference profile ID |
+| `No credentials found` | Re-run `aws configure` and verify your keys |
+| Model not available in region | Switch to `us-east-1` or `us-west-2` |
