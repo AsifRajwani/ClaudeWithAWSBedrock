@@ -1,0 +1,17 @@
+[
+  {
+    "task": "Create a JSON configuration to define an AWS Lambda function that processes DynamoDB stream events",
+    "format": "json",
+    "solution_criteria": "Configuration must include runtime, handler, IAM role, and basic event source mapping for DynamoDB"
+  },
+  {
+    "task": "Write a Python function to extract specific tags from an AWS EC2 instance using boto3",
+    "format": "python",
+    "solution_criteria": "Function should take instance ID as input and return a dictionary of tags, handling potential exceptions"
+  },
+  {
+    "task": "Develop a regex pattern to validate AWS resource names (e.g., S3 bucket names or IAM role names)",
+    "format": "regex",
+    "solution_criteria": "Regex must enforce AWS naming conventions like lowercase, no consecutive hyphens, start/end with alphanumeric characters"
+  }
+]
