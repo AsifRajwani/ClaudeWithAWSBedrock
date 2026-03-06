@@ -1,22 +1,22 @@
 [
   {
-    "output": "Here is a one-day meal plan for a vegetarian athlete with nut allergies during marathon training:\n\n**Calorie Target:** 3500 calories\n**Macronutrient Breakdown:** Protein (175g), Fat (117g), Carbs (525g)\n\n**Meal Plan:**\n\n* **Pre-Training Breakfast (6:00 AM):** Steel-cut oats (100g dry weight) with banana (120g), honey (30g), and whole milk (240g). Greek yogurt (170g).\n    * Protein: 35g, Fat: 18g, Carbs: 115g, Calories: 750\n\n* **Post-Training Snack (9:30 AM):** Chocolate milk (400g) with whole grain toast (60g) and avocado (80g).\n    * Protein: 18g, Fat: 15g, Carbs: 55g, Calories: 400\n\n* **Mid-Morning Snack (11:00 AM):** Smoothie with Greek yogurt (200g), mixed berries (150g), spinach (50g), and oat milk (200g).\n    * Protein: 25g, Fat: 8g, Carbs: 45g, Calories: 350\n\n* **Lunch (1:00 PM):** Quinoa bowl (120g dry quinoa) with black beans (150g cooked), roasted sweet potato (200g), bell peppers (100g), and tahini dressing (30g). Side of whole grain roll (80g).\n    * Protein: 30g, Fat: 20g, Carbs: 110g, Calories: 700\n\n* **Afternoon Snack (4:00 PM):** Hummus (60g) with whole wheat pita (80g) and cucumber slices (100g). Glass of whole milk (240g).\n    * Protein: 20g, Fat: 15g, Carbs: 50g, Calories: 400\n\n* **Dinner (7:00 PM):** Lentil and vegetable curry (200g cooked lentils) with brown rice (100g dry weight), steamed broccoli (150g), and naan bread (100g). Side of Greek yogurt (170g).\n    * Protein: 35g, Fat: 25g, Carbs: 120g, Calories: 800\n\n* **Evening Snack (9:30 PM):** Cottage cheese (200g) with dried fruit (40g) and sunflower seeds (20g). Whole grain crackers (30g).\n    * Protein: 32g, Fat: 16g, Carbs: 50g, Calories: 450\n\nThis vegetarian meal plan emphasizes complete proteins from dairy, legumes, and quinoa while avoiding all nuts. The high carbohydrate content supports marathon training energy needs, and the timing helps optimize recovery and fuel availability.",
+    "output": "Here is a one-day meal plan for an athlete focusing on marathon training fuel optimization with gluten intolerance:\n\n* **Calorie Target:** Approximately 2,800 calories\n* **Macronutrient Breakdown:** Protein (140g), Fat (93g), Carbs (420g)\n\n**Meal Plan:**\n\n* **Breakfast (6:30 AM):** Gluten-free oats (90g dry weight) with banana (120g), blueberries (80g), and almond butter (20g). Almond milk (250g).\n    * Protein: 18g, Fat: 20g, Carbs: 85g\n\n* **Pre-Training Snack (8:30 AM):** Rice cakes (30g) with honey (15g) and a small banana (100g).\n    * Protein: 3g, Fat: 1g, Carbs: 45g\n\n* **Post-Training Recovery (11:00 AM):** Chocolate milk made with lactose-free milk (300g) and cocoa powder (10g), plus dates (40g).\n    * Protein: 12g, Fat: 3g, Carbs: 50g\n\n* **Lunch (1:00 PM):** Quinoa bowl (85g dry quinoa) with grilled chicken breast (120g), sweet potato (150g roasted), avocado (60g), and mixed vegetables (100g) with olive oil (10g).\n    * Protein: 45g, Fat: 25g, Carbs: 95g\n\n* **Afternoon Snack (4:00 PM):** Greek yogurt (170g) with gluten-free granola (30g) and strawberries (100g).\n    * Protein: 20g, Fat: 12g, Carbs: 40g\n\n* **Dinner (7:00 PM):** Baked salmon (140g) with brown rice (80g dry weight) and steamed asparagus (150g) with butter (10g).\n    * Protein: 42g, Fat: 25g, Carbs: 85g\n\n* **Evening Snack (9:30 PM):** Handful of mixed nuts (25g) and dried fruit (30g).\n    * Protein: 6g, Fat: 15g, Carbs: 25g\n\nThis meal plan emphasizes complex carbohydrates for sustained energy during marathon training, adequate protein for muscle recovery, and healthy fats for overall performance. All foods are naturally gluten-free or certified gluten-free alternatives, ensuring safe consumption while meeting the high energy demands of marathon training.",
     "test_case": {
       "prompt_inputs": {
         "height": "175",
-        "weight": "65",
-        "goal": "3500 calories for marathon training day",
-        "restrictions": "vegetarian, nut allergy"
+        "weight": "68",
+        "goal": "marathon training fuel optimization",
+        "restrictions": "gluten intolerance"
       },
       "solution_criteria": [
-        "Provides complete 1-day meal plan",
-        "Meets 3500 calorie target",
-        "Contains only vegetarian foods with no nuts"
+        "Includes high-carbohydrate meals from gluten-free sources",
+        "Provides complete daily meal structure (breakfast, lunch, dinner, snacks)",
+        "Avoids all gluten-containing ingredients"
       ],
       "task_description": "Write a compact, concise 1 day meal plan for a single athlete",
-      "scenario": "Testing with a vegetarian endurance runner who has a nut allergy and needs 3,500 calories for marathon training day"
+      "scenario": "Testing with a marathon runner who has gluten intolerance and needs high-carb fuel"
     },
-    "score": 6,
-    "reasoning": "The solution meets all mandatory requirements by providing a complete meal plan with exact foods, portions, timing, macronutrient breakdown, and daily caloric total. It successfully maintains vegetarian restrictions and avoids nuts. However, there's a significant discrepancy between the stated 3500 calorie target and the actual calculated total of 3850 calories from the individual meals."
+    "score": 10,
+    "reasoning": "The solution fully satisfies all mandatory requirements by providing the required caloric total, macronutrient breakdown, and detailed meal specifications with timing. It also meets all secondary criteria by including high-carbohydrate meals from appropriate gluten-free sources, complete daily meal structure, and strict avoidance of gluten-containing ingredients. The plan is well-structured for marathon training fuel optimization."
   }
 ]

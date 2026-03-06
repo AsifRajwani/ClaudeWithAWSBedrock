@@ -2,16 +2,16 @@
   {
     "prompt_inputs": {
       "height": "175",
-      "weight": "65",
-      "goal": "3500 calories for marathon training day",
-      "restrictions": "vegetarian, nut allergy"
+      "weight": "68",
+      "goal": "marathon training fuel optimization",
+      "restrictions": "gluten intolerance"
     },
     "solution_criteria": [
-      "Provides complete 1-day meal plan",
-      "Meets 3500 calorie target",
-      "Contains only vegetarian foods with no nuts"
+      "Includes high-carbohydrate meals from gluten-free sources",
+      "Provides complete daily meal structure (breakfast, lunch, dinner, snacks)",
+      "Avoids all gluten-containing ingredients"
     ],
     "task_description": "Write a compact, concise 1 day meal plan for a single athlete",
-    "scenario": "Testing with a vegetarian endurance runner who has a nut allergy and needs 3,500 calories for marathon training day"
+    "scenario": "Testing with a marathon runner who has gluten intolerance and needs high-carb fuel"
   }
 ]
