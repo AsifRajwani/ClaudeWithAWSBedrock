@@ -5,7 +5,11 @@ This repository contains code and notebooks for the Skilljar course **Claude wit
 - Course link: https://anthropic.skilljar.com/claude-in-amazon-bedrock
 - Goal: keep all course examples, exercises, and related experiments in one place
 
-## Project Origin
+## Project Structure and Origin
+
+All course notebooks live in **`src/course`** (e.g. `001_Api_Requests_complete.ipynb`, `002_System_Messages_complete.ipynb`, `002_tools_complete.ipynb`, `002_prompting_completed.ipynb`, `003_Streaming_complete.ipynb`, `004_Controlling_Output_complete.ipynb`, `004_structured_data_complete.ipynb`, `001_Prompt_Evals_complete.ipynb`). Follow the course on Skilljar for the intended sequence.
+
+Notebooks and scripts directly under `src` (e.g. `Python101-1.ipynb`, `PandasTutorial-2.ipynb`, `validate_bedrock_setup.py`) are **only for validating your local Python and AWS/Bedrock setup** and are not part of the main course flow.
 
 This repository was created from the `PythonStarter` template:
 
@@ -146,5 +150,6 @@ If you get a Claude response back, your setup is working.
 | `403 / AccessDeniedException` | Complete the Anthropic FTU form in the Bedrock console |
 | `ValidationException` mentioning inference profile | Use an inference profile ID in `BEDROCK_MODEL_ID` (example: `us.anthropic.claude-3-5-sonnet-20241022-v2:0`) |
 | `ResourceNotFoundException` with "Legacy" model message | Pick an ACTIVE Claude model in Bedrock Model Catalog and set `BEDROCK_MODEL_ID` to its inference profile ID |
+| `ValidationException`: "text content blocks must contain non-whitespace text" | Your prompt or dataset has empty input; ensure `prompt_inputs` (or the string you send to the model) is non-empty |
 | `No credentials found` | Re-run `aws configure` and verify your keys |
 | Model not available in region | Switch to `us-east-1` or `us-west-2` |
