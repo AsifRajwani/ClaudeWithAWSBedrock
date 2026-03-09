@@ -137,7 +137,7 @@ uv run python src/validate_bedrock_setup.py
 Optional: run with an explicit inference profile ID:
 
 ```bash
-BEDROCK_MODEL_ID=us.anthropic.claude-3-5-sonnet-20241022-v2:0 \
+BEDROCK_MODEL_ID=us.anthropic.claude-sonnet-4-20250514-v1:0 \
 uv run python src/validate_bedrock_setup.py
 ```
 
