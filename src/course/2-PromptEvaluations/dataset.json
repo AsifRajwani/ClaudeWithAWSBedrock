@@ -1,0 +1,17 @@
+[
+  {
+    "task": "Create a JSON configuration for an AWS Lambda function that processes S3 bucket events and triggers when a new file is uploaded",
+    "format": "json",
+    "solution_criteria": "Must include valid AWS Lambda resource configuration, specify S3 bucket trigger event, include runtime and handler information"
+  },
+  {
+    "task": "Write a Python function to filter and transform a list of AWS EC2 instance details, returning only running instances with their public IP addresses",
+    "format": "python",
+    "solution_criteria": "Function should use list comprehension or filter(), handle potential missing data, return clean list of running instance details"
+  },
+  {
+    "task": "Create a regular expression to validate AWS resource naming conventions for S3 bucket names (lowercase, no spaces, 3-63 characters)",
+    "format": "regex",
+    "solution_criteria": "Regex must enforce AWS S3 bucket naming rules: lowercase letters, numbers, hyphens, 3-63 characters long, cannot start/end with hyphen"
+  }
+]

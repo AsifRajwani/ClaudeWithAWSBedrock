@@ -1,0 +1,17 @@
+[
+  {
+    "prompt_inputs": {
+      "height": "175",
+      "weight": "68",
+      "goal": "Marathon race tomorrow - need carb loading and optimal pre/post-race nutrition timing",
+      "restrictions": "Lactose intolerant, avoid high-fiber foods day before race"
+    },
+    "solution_criteria": [
+      "Includes high-carbohydrate foods for energy loading",
+      "Specifies pre-race and post-race meal timing",
+      "Avoids lactose and high-fiber foods"
+    ],
+    "task_description": "Write a compact, concise 1 day meal plan for a single athlete",
+    "scenario": "Testing with a marathon runner who needs high-carb loading, specific hydration timing, and pre/post-race nutrition optimization"
+  }
+]
