@@ -7,7 +7,21 @@ This repository contains code and notebooks for the Skilljar course **Claude wit
 
 ## Project Structure and Origin
 
-All course notebooks live in **`src/course`** (e.g. `001_Api_Requests_complete.ipynb`, `002_System_Messages_complete.ipynb`, `002_tools_complete.ipynb`, `002_prompting_completed.ipynb`, `003_Streaming_complete.ipynb`, `004_Controlling_Output_complete.ipynb`, `004_structured_data_complete.ipynb`, `001_Prompt_Evals_complete.ipynb`). Follow the course on Skilljar for the intended sequence.
+All course notebooks live under **`src/course`** in subdirectories that mirror the course structure, for example:
+
+- `src/course/1-WorkingWithAPI/001_Api_Requests_complete.ipynb`
+- `src/course/1-WorkingWithAPI/002_System_Messages_complete.ipynb`
+- `src/course/1-WorkingWithAPI/003_Streaming_complete.ipynb`
+- `src/course/1-WorkingWithAPI/004_Controlling_Output_complete.ipynb`
+- `src/course/2-PromptEvaluations/001_Prompt_Evals_complete.ipynb`
+- `src/course/3-PromptEngineering/002_prompting_completed.ipynb`
+- `src/course/4-ToolUse/002_tools_complete.ipynb`
+- `src/course/4-ToolUse/004_structured_data_complete.ipynb`
+- `src/course/4-ToolUse/005_text_editor_tool.ipynb`
+- `src/course/5-RAG/00X_*.ipynb` (chunking, embeddings, vector DB, BM25, hybrid, reranking, contextual)
+- `src/course/6-ClaudeFeatures/00X_*.ipynb` (thinking, images, PDF, caching)
+
+Follow the course on Skilljar for the intended sequence.
 
 Notebooks and scripts directly under `src` (e.g. `Python101-1.ipynb`, `PandasTutorial-2.ipynb`, `validate_bedrock_setup.py`) are **only for validating your local Python and AWS/Bedrock setup** and are not part of the main course flow.
 
@@ -44,6 +58,40 @@ uv run python -m pip install boto
 # install boto3
 uv run python -m pip install boto3
 ```
+
+## Course `.env` Configuration (required)
+
+The course notebooks in `src/course/**` now **expect a `.env` file** in `src/course` so that
+region and model configuration live in one place instead of being hard-coded in each notebook.
+
+Create `src/course/.env` with at least:
+
+```bash
+BEDROCK_REGION="us-east-1"            # or us-west-2 if you prefer
+BEDROCK_MODEL_ID="us.anthropic.claude-sonnet-4-20250514-v1:0"
+```
+
+- **`BEDROCK_REGION`**: Must match a region where your chosen Claude model/inference profile is available.
+- **`BEDROCK_MODEL_ID`**: Should be an **active** Claude 3.5/4 Sonnet/Haidu inference profile ID from the Bedrock console.
+
+All course notebooks that call Bedrock now start with a pattern like:
+
+```python
+import boto3
+import os
+from dotenv import load_dotenv
+
+load_dotenv(override=True)
+
+region = os.environ.get("BEDROCK_REGION", "us-west-2")
+client = boto3.client("bedrock-runtime", region_name=region)
+model_id = os.environ["BEDROCK_MODEL_ID"]
+```
+
+Changing models (for example, when a course notebook originally referenced an older Claude 3 model that is
+no longer available) is now done **only by editing `BEDROCK_MODEL_ID` in `.env`**, not by touching the notebooks
+themselves. If a model goes "Legacy" or is removed from the catalog, pick a new active inference profile ID
+in the Bedrock console and update `.env`.
 
 ## Validating the Setup
 
@@ -134,7 +182,7 @@ Run the setup validation script:
 uv run python src/validate_bedrock_setup.py
 ```
 
-Optional: run with an explicit inference profile ID:
+Optional: run with an explicit inference profile ID (matching what you put in `.env`):
 
 ```bash
 BEDROCK_MODEL_ID=us.anthropic.claude-sonnet-4-20250514-v1:0 \
@@ -149,7 +197,7 @@ If you get a Claude response back, your setup is working.
 |-------|-----|
 | `403 / AccessDeniedException` | Complete the Anthropic FTU form in the Bedrock console |
 | `ValidationException` mentioning inference profile | Use an inference profile ID in `BEDROCK_MODEL_ID` (example: `us.anthropic.claude-3-5-sonnet-20241022-v2:0`) |
-| `ResourceNotFoundException` with "Legacy" model message | Pick an ACTIVE Claude model in Bedrock Model Catalog and set `BEDROCK_MODEL_ID` to its inference profile ID |
+| `ResourceNotFoundException` with "Legacy" model message | The referenced model is no longer active; pick an active Claude 3.5/4 inference profile in the Bedrock Model Catalog and update `BEDROCK_MODEL_ID` in your `.env` |
 | `ValidationException`: "text content blocks must contain non-whitespace text" | Your prompt or dataset has empty input; ensure `prompt_inputs` (or the string you send to the model) is non-empty |
 | `No credentials found` | Re-run `aws configure` and verify your keys |
 | Model not available in region | Switch to `us-east-1` or `us-west-2` |

@@ -2,16 +2,17 @@
   {
     "prompt_inputs": {
       "height": "175",
-      "weight": "68",
-      "goal": "Marathon race tomorrow - need carb loading and optimal pre/post-race nutrition timing",
-      "restrictions": "Lactose intolerant, avoid high-fiber foods day before race"
+      "weight": "65",
+      "goal": "Marathon race preparation - carb loading phase",
+      "restrictions": "Nut allergy (all tree nuts and peanuts)"
     },
     "solution_criteria": [
-      "Includes high-carbohydrate foods for energy loading",
-      "Specifies pre-race and post-race meal timing",
-      "Avoids lactose and high-fiber foods"
+      "High-carbohydrate meals throughout the day",
+      "No nuts or nut-containing ingredients",
+      "Appropriate portions for 65kg athlete",
+      "Covers breakfast, lunch, dinner and snacks"
     ],
     "task_description": "Write a compact, concise 1 day meal plan for a single athlete",
-    "scenario": "Testing with a marathon runner who needs high-carb loading, specific hydration timing, and pre/post-race nutrition optimization"
+    "scenario": "Testing with a marathon runner who has a nut allergy and needs high-carb meals for race preparation"
   }
 ]

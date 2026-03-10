@@ -1,17 +1,17 @@
 [
   {
-    "task": "Create a JSON configuration for an AWS Lambda function that processes S3 bucket events and triggers when a new file is uploaded",
-    "format": "json",
-    "solution_criteria": "Must include valid AWS Lambda resource configuration, specify S3 bucket trigger event, include runtime and handler information"
-  },
-  {
-    "task": "Write a Python function to filter and transform a list of AWS EC2 instance details, returning only running instances with their public IP addresses",
+    "task": "Create a Python function that validates if an AWS S3 bucket name follows the correct naming conventions: 3-63 characters long, contains only lowercase letters, numbers, dots, and hyphens, doesn't start or end with dots or hyphens, and doesn't contain consecutive dots.",
     "format": "python",
-    "solution_criteria": "Function should use list comprehension or filter(), handle potential missing data, return clean list of running instance details"
+    "solution_criteria": "Function should return boolean, handle edge cases (empty strings, None), correctly validate all naming rules including no consecutive dots, and properly check start/end character restrictions"
   },
   {
-    "task": "Create a regular expression to validate AWS resource naming conventions for S3 bucket names (lowercase, no spaces, 3-63 characters)",
+    "task": "Generate a JSON policy document that grants read-only access to a specific S3 bucket named 'my-data-bucket' for objects with the prefix 'reports/' to any authenticated user.",
+    "format": "json",
+    "solution_criteria": "Must be valid IAM policy JSON with correct Version, Statement structure, appropriate Effect (Allow), correct Action for read-only S3 access (s3:GetObject), and properly formatted Resource ARN with bucket name and prefix"
+  },
+  {
+    "task": "Write a regular expression that matches valid AWS IAM role ARNs. The ARN should start with 'arn:aws:iam::', followed by an account ID (12 digits), then ':role/', and end with a role name that can contain alphanumeric characters, plus (+), equal (=), comma (,), period (.), at (@), and hyphen (-) symbols.",
     "format": "regex",
-    "solution_criteria": "Regex must enforce AWS S3 bucket naming rules: lowercase letters, numbers, hyphens, 3-63 characters long, cannot start/end with hyphen"
+    "solution_criteria": "Regex should match the exact ARN format, validate 12-digit account ID, include all specified allowed characters for role names, and not match invalid ARN formats or incorrect account ID lengths"
   }
 ]
