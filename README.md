@@ -20,6 +20,7 @@ All course notebooks live under **`src/course`** in subdirectories that mirror t
 - `src/course/4-ToolUse/005_text_editor_tool.ipynb`
 - `src/course/5-RAG/00X_*.ipynb` (chunking, embeddings, vector DB, BM25, hybrid, reranking, contextual)
 - `src/course/6-ClaudeFeatures/00X_*.ipynb` (thinking, images, PDF, caching)
+- `src/course/7-MCP/` (MCP server/client module used in the final section)
 
 Follow the course on Skilljar for the intended sequence.
 
