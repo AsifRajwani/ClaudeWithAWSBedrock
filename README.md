@@ -26,6 +26,10 @@ Follow the course on Skilljar for the intended sequence.
 
 Notebooks and scripts directly under `src` (e.g. `Python101-1.ipynb`, `PandasTutorial-2.ipynb`, `validate_bedrock_setup.py`) are **only for validating your local Python and AWS/Bedrock setup** and are not part of the main course flow.
 
+> **Note on the Agent section:**  
+> The full code for the Agent chapter of the course is **not included in this repository**. The Agent material is best run as a separate project using the complete project ZIP provided by the Skilljar course.  
+> That chapter is particularly valuable for seeing how Claude Code is used for day‑to‑day development and debugging workflows, and it also walks through parallel development using Git worktrees.
+
 This repository was created from the `PythonStarter` template:
 
 - https://github.com/AsifRajwani/PythonStarter
